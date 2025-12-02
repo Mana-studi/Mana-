@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Access • Mana</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dev-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .dev-card {
+            background: rgba(13, 27, 42, 0.9);
+            border-radius: 20px;
+            padding: 3rem;
+            width: 100%;
+            border: 2px solid var(--color-primary);
+            box-shadow: var(--glow-primary);
+            text-align: center;
+        }
+        
+        .dev-logo {
+            font-size: 4rem;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+        
+        .dev-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, var(--color-accent), var(--color-primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .dev-subtitle {
+            color: var(--color-light);
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+        
+        .dev-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+            width: 100%;
+        }
+        
+        .dev-btn {
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        
+        .dev-btn.lock {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .dev-btn.unlock {
+            background: rgba(13, 27, 42, 0.7);
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+        }
+        
+        .dev-btn.back {
+            background: transparent;
+            color: var(--color-light);
+            border: 1px solid var(--color-gray);
+        }
+        
+        .dev-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dev-info {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(13, 27, 42, 0.5);
+            border-radius: 12px;
+            border-left: 4px solid var(--color-accent);
+            text-align: left;
+        }
+        
+        .dev-info h3 {
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .dev-info ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .dev-info li {
+            padding: 0.5rem 0;
+            color: var(--color-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dev-info li:last-child {
+            border-bottom: none;
+        }
+        
+        .dev-info code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+            color: var(--color-accent-light);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @media (max-width: 768px) {
+            .dev-container {
+                padding: 1rem;
+            }
+            
+            .dev-card {
+                padding: 2rem;
+            }
+            
+            .dev-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    
+    <div class="dev-container">
+        <div class="dev-card">
+            <div class="dev-logo">
+                <i class="fas fa-terminal"></i>
+            </div>
+            
+            <h1 class="dev-title">DEVELOPER ACCESS</h1>
+            <p class="dev-subtitle">Control panel untuk Mana</p>
+            
+            <div id="login-section">
+                <div class="input-group" style="margin-bottom: 1.5rem;">
+                    <input type="password" id="password-input" placeholder="Masukkan password akses" 
+                           style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.1); 
+                                  border: 1px solid var(--color-gray); border-radius: 8px; 
+                                  color: white; font-size: 1rem;">
+                </div>
+                
+                <button id="login-btn" class="dev-btn lock">
+                    <i class="fas fa-sign-in-alt"></i> Akses Developer Panel
+                </button>
+            </div>
+            
+            <div id="control-section" style="display: none;">
+                <div class="dev-controls">
+                    <button id="lock-site-btn" class="dev-btn lock">
+                        <i class="fas fa-lock"></i> Kunci Website
+                    </button>
+                    
+                    <button id="unlock-site-btn" class="dev-btn unlock">
+                        <i class="fas fa-unlock"></i> Buka Kunci Website
+                    </button>
+                    
+                    <button id="clear-data-btn" class="dev-btn" style="background: rgba(230, 57, 70, 0.2); color: #e63946; border: 2px solid rgba(230, 57, 70, 0.3);">
+                        <i class="fas fa-trash"></i> Clear Local Data
+                    </button>
+                    
+                    <a href="index.html" class="dev-btn back">
+                        <i class="fas fa-arrow-left"></i> Kembali ke Website
+                    </a>
+                </div>
+                
+                <div class="dev-info">
+                    <h3>Quick Commands (dari browser console):</h3>
+                    <ul>
+                        <li><code>lockSite()</code> - Kunci website secara instan</li>
+                        <li><code>unlockSite()</code> - Buka kunci website</li>
+                        <li><code>toggleDebug()</code> - Toggle debug mode</li>
+                        <li><code>localStorage.clear()</code> - Hapus semua data local</li>
+                    </ul>
+                </div>
+                
+                <div class="dev-info">
+                    <h3>Status Sistem:</h3>
+                    <ul>
+                        <li id="lock-status">Status Kunci: Loading...</li>
+                        <li id="theme-status">Theme: Loading...</li>
+                        <li id="last-update">Last Modified: <span id="modified-date">-</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Password sederhana (bisa diganti)
+            const DEV_PASSWORD = 'mananama@#';
+            
+            // Element references
+            const passwordInput = document.getElementById('password-input');
+            const loginBtn = document.getElementById('login-btn');
+            const loginSection = document.getElementById('login-section');
+            const controlSection = document.getElementById('control-section');
+            
+            const lockSiteBtn = document.getElementById('lock-site-btn');
+            const unlockSiteBtn = document.getElementById('unlock-site-btn');
+            const clearDataBtn = document.getElementById('clear-data-btn');
+            
+            const lockStatus = document.getElementById('lock-status');
+            const themeStatus = document.getElementById('theme-status');
+            const modifiedDate = document.getElementById('modified-date');
+            
+            // Update status sistem
+            function updateSystemStatus() {
+                // Lock status
+                const isLocked = localStorage.getItem('siteLocked') === 'true';
+                lockStatus.textContent = `Status Kunci: ${isLocked ? 'TERKUNCI 🔒' : 'TERBUKA 🔓'}`;
+                
+                // Theme status
+                const theme = localStorage.getItem('theme') || 'dark';
+                themeStatus.textContent = `Theme: ${theme.toUpperCase()}`;
+                
+                // Last modified date
+                const lastModified = document.lastModified;
+                modifiedDate.textContent = lastModified;
+            }
+            
+            // Login handler
+            loginBtn.addEventListener('click', function() {
+                const password = passwordInput.value.trim();
+                
+                if (password === DEV_PASSWORD) {
+                    loginSection.style.display = 'none';
+                    controlSection.style.display = 'block';
+                    updateSystemStatus();
+                } else {
+                    alert('Password salah! Coba lagi.');
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                }
+            });
+            
+            // Enter key untuk login
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    loginBtn.click();
+                }
+            });
+            
+            // Lock site button
+            lockSiteBtn.addEventListener('click', function() {
+                if (confirm('Apakah Anda yakin ingin MENGUNCI website? Ini akan menyembunyikan semua konten dari pengunjung.')) {
+                    localStorage.setItem('siteLocked', 'true');
+                    updateSystemStatus();
+                    alert('Website telah dikunci. Pengunjung akan melihat layar terkunci.');
+                }
+            });
+            
+            // Unlock site button
+            unlockSiteBtn.addEventListener('click', function() {
+                localStorage.setItem('siteLocked', 'false');
+                updateSystemStatus();
+                alert('Website telah dibuka kuncinya.');
+            });
+            
+            // Clear data button
+            clearDataBtn.addEventListener('click', function() {
+                if (confirm('HAPUS SEMUA DATA LOCAL? Ini akan menghapus pengaturan theme, status kunci, dan data lainnya.')) {
+                    localStorage.clear();
+                    updateSystemStatus();
+                    alert('Semua data local telah dihapus.');
+                }
+            });
+            
+            // Auto-focus password input
+            passwordInput.focus();
+            
+            // Check jika sudah login (dari session)
+            const isLoggedIn = sessionStorage.getItem('devLoggedIn') === 'true';
+            if (isLoggedIn) {
+                loginSection.style.display = 'none';
+                controlSection.style.display = 'block';
+                updateSystemStatus();
+            }
+            
+            // Simpan session saat berhasil login
+            loginBtn.addEventListener('click', function() {
+                sessionStorage.setItem('devLoggedIn', 'true');
+            });
+            
+            // Tambahkan konfirmasi sebelum meninggalkan halaman
+            window.addEventListener('beforeunload', function(e) {
+                if (controlSection.style.display === 'block') {
+                    // Optional: Konfirmasi sebelum keluar
+                    // e.preventDefault();
+                    // e.returnValue = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
