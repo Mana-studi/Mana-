@@ -1,152 +1,846 @@
+/* ===== RESET & BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-<!DOCTYPE html>  
-<html lang="id">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Mana • Editor Visual</title>  
-    <meta name="description" content="Editor visual spesialis typography, poster digital, dan video editing. Belajar sejak 2018.">  
-    <meta name="keywords" content="Mana, editing, typography, poster digital, video editing, Alight Motion">  
-    <link rel="stylesheet" href="style.css">  
-    <link rel="preconnect" href="https://fonts.googleapis.com">  
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  
-    <link rel="icon" type="image/x-icon" href="logo.png">  
-    <!-- Google Analytics -->  
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>  
-<script>  
-  window.dataLayer = window.dataLayer || [];  
-  function gtag(){dataLayer.push(arguments);}  
-  gtag('js', new Date());  
-  gtag('config', 'G-XXXXXXXXXX');  
-</script>  
-</head>  
-<body>  
-    <!-- Background Elements -->  
-    <div class="bg-grid"></div>  
-    <div class="bg-glow"></div>  
-      
-    <!-- Main Container -->  
-    <main class="container">  
-        <!-- Hero Section -->  
-        <section class="hero">  
-           <div class="logo-container">
-    <div class="logo-placeholder">
-        <img src="logo.png" alt="MANA Profile" class="pp-image">
-    </div>
-                <h1 class="name">MANA</h1>  
-                <p class="title">Editor Visual</p>  
-            </div>  
-              
-            <div class="bio">  
-                <p>Spesialis dalam <span class="highlight">typography</span>, <span class="highlight">poster digital</span>, dan <span class="highlight">video editing</span>.</p>  
-                <p class="tagline">Membuat visual menarik dan membuat pelanggan merasa puas.</p>  
-            </div>  
-              
-            <div class="stats">  
-                <div class="stat-item">  
-                    <span class="stat-icon"><i class="fas fa-calendar-alt"></i></span>  
-                    <span class="stat-text">Sejak 2018</span>  
-                </div>  
-                <div class="stat-item">  
-                    <span class="stat-icon"><i class="fas fa-map-marker-alt"></i></span>  
-                    <span class="stat-text">Indonesia 🇮🇩</span>  
-                </div>  
-                <div class="stat-item">  
-                    <span class="stat-icon"><i class="fas fa-graduation-cap"></i></span>  
-                    <span class="stat-text">Kelas XI Perfilman</span>  
-                </div>  
-            </div>  
-        </section>  
-  
-        <!-- Links Section -->  
-        <section class="links">  
-            <h2 class="section-title">Hubungi & Follow</h2>  
-              
-            <div class="link-grid">  
-                <a href="https://wa.me/6282313145898?text=Halo%20Mana,%20saya%20ingin%20order%20editing"   
-                   target="_blank" class="link-card whatsapp">  
-                    <div class="link-icon">  
-                        <i class="fab fa-whatsapp"></i>  
-                    </div>  
-                    <div class="link-content">  
-                        <h3>Order via WhatsApp</h3>  
-                        <p>Kirim detail project Anda</p>  
-                    </div>  
-                    <div class="link-arrow">  
-                        <i class="fas fa-arrow-right"></i>  
-                    </div>  
-                </a>  
-                  
-                <a href="https://tiktok.com/@mana.fx" target="_blank" class="link-card tiktok">  
-                    <div class="link-icon">  
-                        <i class="fab fa-tiktok"></i>  
-                    </div>  
-                    <div class="link-content">  
-                        <h3>TikTok Portfolio</h3>  
-                        <p>@Mana.fx • Lihat karya terbaru</p>  
-                    </div>  
-                    <div class="link-arrow">  
-                        <i class="fas fa-arrow-right"></i>  
-                    </div>  
-                </a>  
-                  
-                <a href="https://www.instagram.com/mana.fx_?igsh=MW5vb2FvbmM5OGZ1Nw==" class="link-card instagram">  
-                    <div class="link-icon">  
-                        <i class="fab fa-instagram"></i>  
-                    </div>  
-                    <div class="link-content">  
-                        <h3>Instagram</h3>  
-                        <p>Follow untuk update</p>  
-                    </div>  
-                    <div class="link-arrow">  
-                        <i class="fas fa-arrow-right"></i>  
-                    </div>  
-                </a>  
-                  
-                <a href="https://sociabuzz.com/mana_fx"   
-                   target="_blank" class="link-card gift">  
-                    <div class="link-icon">  
-                        <i class="fas fa-gift"></i>  
-                    </div>  
-                    <div class="link-content">  
-                        <h3>Sociabuzz</h3>  
-                        <p>cek juga sociabuzz kami 👍</p>  
-                    </div>  
-                    <div class="link-arrow">  
-                        <i class="fas fa-arrow-right"></i>  
-                    </div>  
-                </a>  
-                
-                <a href="https://youtube.com/@manastudi?si=IGUICt7c6MkMTmUC" class="link-card youtube">  
-                    <div class="link-icon">  
-                        <i class="fab fa-youtube"></i>  
-                    </div>  
-                    <div class="link-content">  
-                        <h3>YouTube</h3>  
-                        <p>Coming soon • Tutorial & showcase</p>  
-                    </div>  
-                    <div class="link-arrow">  
-                        <i class="fas fa-arrow-right"></i>  
-                    </div>  
-                </a>  
- 
-                <h2 class="section-title">akun pro+premium</h2>
-                <a href="https://wa.me/6285787618377?text=order+capcut+pro+manafx" class="link-card cut">  
-                    <div class="link-icon">  
-                        <i class="fas fa-cut"></i>  
-                    </div>  
-                    <div class="link-content">  
-                        <h3>CapCut</h3>  
-                        <p>20.000.--35 hari---sharing</p>  
-                    </div>  
-                    <div class="link-arrow">  
-                        <i class="fas fa-arrow-right"></i>  
-                    </div>  
-                </a>  
-                <a href="https://wa.me/6285787618377?text=mau+order+am+prem+nama" class="link-card film">  
-                    <div class="link-icon">  
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0f;
+    color: #ffffff;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ===== COLOR PALETTE (Classroom of the Elite Theme) ===== */
+:root {
+    /* Primary Colors */
+    --color-primary: #8b0000;       /* Dark Red */
+    --color-primary-dark: #5a0000;  /* Darker Red */
+    --color-primary-light: #b22222; /* Lighter Red */
+    
+    /* Secondary Colors */
+    --color-secondary: #0d1b2a;     /* Navy Blue */
+    --color-secondary-dark: #070d15;
+    --color-secondary-light: #1b263b;
+    
+    /* Accent Colors */
+    --color-accent: #00b4d8;        /* Teal Blue */
+    --color-accent-dark: #0077b6;
+    --color-accent-light: #90e0ef;
+    
+    /* Neutral Colors */
+    --color-dark: #000000;
+    --color-gray: #2d2d3a;
+    --color-light: #e0e1dd;
+    --color-white: #ffffff;
+    
+    /* UI Colors */
+    --color-success: #4cc9f0;
+    --color-warning: #fca311;
+    --color-danger: #e63946;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+    
+    /* Shadows & Glows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --glow-primary: 0 0 20px rgba(139, 0, 0, 0.5);
+    --glow-accent: 0 0 20px rgba(0, 180, 216, 0.5);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* ===== BACKGROUND ELEMENTS ===== */
+.bg-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(13, 27, 42, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(13, 27, 42, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -2;
+    opacity: 0.3;
+}
+
+.bg-glow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 80vh;
+    background: radial-gradient(circle, rgba(139, 0, 0, 0.1) 0%, transparent 70%);
+    z-index: -1;
+    filter: blur(40px);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    text-align: center;
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+}
+
+.logo-container {
+    margin-bottom: 2rem;
+}
+
+.logo-placeholder {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    color: var(--color-white);
+    box-shadow: var(--glow-primary);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(45deg, var(--color-white), var(--color-accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    animation: fadeIn 1s ease-out;
+}
+
+.title {
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+.bio {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+    color: var(--color-light);
+}
+
+.highlight {
+    color: var(--color-accent);
+    font-weight: 600;
+    position: relative;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--transition-normal);
+}
+
+.highlight:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.tagline {
+    font-style: italic;
+    margin-top: 1rem;
+    color: var(--color-white);
+    opacity: 0.9;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(13, 27, 42, 0.5);
+    border-radius: 50px;
+    border: 1px solid var(--color-gray);
+    transition: all var(--transition-normal);
+}
+
+.stat-item:hover {
+    background: rgba(13, 27, 42, 0.8);
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+.stat-icon {
+    color: var(--color-accent);
+    font-size: 1.1rem;
+}
+
+.stat-text {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* ===== SECTION TITLE ===== */
+.section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+/* ===== LINKS SECTION ===== */
+.links {
+    margin-bottom: 3rem;
+}
+
+.link-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.link-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: rgba(13, 27, 42, 0.7);
+    border-radius: 16px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.link-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.7s ease;
+}
+
+.link-card:hover::before {
+    left: 100%;
+}
+
+.link-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-accent);
+    box-shadow: var(--glow-accent);
+}
+
+.link-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.whatsapp .link-icon {
+    background: rgba(37, 211, 102, 0.2);
+    color: #25d366;
+    border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.gift .link-icon {
+    background: rgba(37, 209, 102, 0.2);
+    color: #25d366;
+    border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.tiktok .link-icon {
+    background: rgba(0, 0, 0, 0.2);
+    color: #000000;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.instagram .link-icon {
+    background: rgba(225, 48, 108, 0.2);
+    color: #e1306c;
+    border: 1px solid rgba(225, 48, 108, 0.3);
+}
+
+.youtube .link-icon {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff0000;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.film .link-icon {
+    background: rgba(135, 206, 250, 0.2);
+    color: #87cefa;
+    border: 1px solid rgba(135, 206, 250, 0.3);
+}
+
+.google-drive .link-icon{
+    background: rgba(26,115,252,0.2);
+    color: #1a73e8;
+    border: rgba(26,115,232,0.3);
+}
+
+.cut .link-icon {
+    background: rgba(155, 89, 182, 0.2);
+    color: #9b59b6;
+    border: 1px solid rgba(155, 89, 182, 0.3);
+
+}
+
+.people-group .link-icon {
+    background: rgba(37, 211, 102, 0.2);
+    color: #25d366;
+    border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.video .link-icon {
+    background: rgba(135, 206, 250, 0.2);
+    color: #87cefa;
+    border: 1px solid rgba(135, 206, 250, 0.3);
+}
+
+
+
+
+.link-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--color-white);
+}
+
+.link-content p {
+    font-size: 0.9rem;
+    color: var(--color-light);
+    opacity: 0.8;
+}
+
+.link-arrow {
+    color: var(--color-accent);
+    font-size: 1.2rem;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all var(--transition-normal);
+}
+
+.link-card:hover .link-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ===== INFO SECTION ===== */
+.info {
+    margin-bottom: 3rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.info-card {
+    background: rgba(13, 27, 42, 0.5);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid var(--color-gray);
+    transition: all var(--transition-normal);
+}
+
+.info-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-5px);
+    box-shadow: var(--glow-accent);
+}
+
+.info-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--color-white);
+}
+
+.info-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-white);
+}
+
+.price-tag {
+    display: inline-block;
+    background: var(--gradient-primary);
+    color: var(--color-white);
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+    box-shadow: var(--shadow-md);
+}
+
+.info-card p {
+    font-size: 0.95rem;
+    color: var(--color-light);
+    opacity: 0.9;
+}
+
+.services {
+    background: rgba(13, 27, 42, 0.3);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid var(--color-gray);
+}
+
+.services h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-accent);
+    text-align: center;
+}
+
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    list-style: none;
+}
+
+.services-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(13, 27, 42, 0.5);
+    border-radius: 10px;
+    transition: all var(--transition-fast);
+}
+
+.services-list li:hover {
+    background: rgba(13, 27, 42, 0.8);
+    transform: translateX(5px);
+}
+
+.services-list li i {
+    color: var(--color-accent);
+    font-size: 1rem;
+}
+
+/* ===== TIKTOK FEED ===== */
+.tiktok-feed {
+    margin-bottom: 3rem;
+}
+
+.embed-container {
+    background: rgba(13, 27, 42, 0.3);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid var(--color-gray);
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading {
+    text-align: center;
+    color: var(--color-accent);
+}
+
+.loading i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.fallback {
+    text-align: center;
+    padding: 3rem;
+}
+
+.fallback-content i {
+    font-size: 3rem;
+    color: var(--color-gray);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.fallback-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-white);
+}
+
+.fallback-content p {
+    color: var(--color-light);
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(13, 27, 42, 0.7);
+    border: 1px solid var(--color-gray);
+    border-radius: 50px;
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all var(--transition-normal);
+}
+
+.btn-secondary:hover {
+    background: rgba(13, 27, 42, 0.9);
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: var(--glow-accent);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-gray);
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo {
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-white);
+}
+
+.footer-text h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+    color: var(--color-white);
+}
+
+.footer-text p {
+    font-size: 0.9rem;
+    color: var(--color-light);
+    opacity: 0.8;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(13, 27, 42, 0.5);
+    border-radius: 50px;
+    color: var(--color-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all var(--transition-fast);
+}
+
+.footer-link:hover {
+    background: rgba(13, 27, 42, 0.8);
+    color: var(--color-white);
+}
+
+.footer-link.emergency {
+    color: var(--color-accent);
+}
+
+.footer-link.dev {
+    color: var(--color-primary-light);
+}
+
+.footer-copyright {
+    color: var(--color-light);
+    opacity: 0.6;
+    font-size: 0.9rem;
+}
+
+.footer-note {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.footer-note i {
+    color: var(--color-primary-light);
+    margin: 0 0.25rem;
+}
+
+/* ===== SITE LOCK OVERLAY ===== */
+.site-lock {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-dark);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lock-content {
+    text-align: center;
+    padding: 3rem;
+    background: rgba(13, 27, 42, 0.9);
+    border-radius: 20px;
+    border: 2px solid var(--color-primary);
+    max-width: 400px;
+    width: 90%;
+}
+
+.lock-icon {
+    font-size: 4rem;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.lock-content h2 {
+    font-size: 2.5rem;
+    color: var(--color-white);
+    margin-bottom: 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.lock-content p {
+    color: var(--color-light);
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+.btn-unlock {
+    padding: 0.75rem 2rem;
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: 50px;
+    color: var(--color-white);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.btn-unlock:hover {
+    transform: scale(1.05);
+    box-shadow: var(--glow-primary);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .name {
+        font-size: 2.8rem;
+    }
+    
+    .stats {
+        gap: 1rem;
+    }
+    
+    .stat-item {
+        padding: 0.5rem 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .link-grid {
+        gap: 1rem;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .name {
+        font-size: 2.2rem;
+    }
+    
+    .title {
+        font-size: 1rem;
+    }
+    
+    .bio {
+        font-size: 1rem;
+    }
+    
+    .logo-placeholder {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+    }
+    
+    .link-card {
+        padding: 1rem;
+    }
+    
+    .link-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.hidden {
+    display: none !important;
+}
+
+.logo-placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.2);
+}
+
+.pp-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}                    <div class="link-icon">  
                         <i class="fas fa-film"></i>  
                     </div>  
                     <div class="link-content">  
