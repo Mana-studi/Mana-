@@ -315,6 +315,12 @@ body {
     border: 1px solid rgba(37, 211, 102, 0.3);
 }
 
+.gift .link-icon {
+    background: rgba(37, 209, 102, 0.2);
+    color: #25d366;
+    border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
 .tiktok .link-icon {
     background: rgba(0, 0, 0, 0.2);
     color: #000000;
@@ -331,6 +337,25 @@ body {
     background: rgba(255, 0, 0, 0.2);
     color: #ff0000;
     border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.film .link-icon {
+    background: rgba(135, 206, 250, 0.2);
+    color: #87cefa;
+    border: 1px solid rgba(135, 206, 250, 0.3);
+}
+
+.google-drive .link-icon{
+    background: rgba(26,115,252,0.2);
+    color: #1a73e8;
+    border: rgba(26,115,232,0.3);
+}
+
+.cut .link-icon {
+    background: rgba(155, 89, 182, 0.2);
+    color: #9b59b6;
+    border: 1px solid rgba(155, 89, 182, 0.3);
+
 }
 
 .link-content {
