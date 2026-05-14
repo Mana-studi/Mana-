@@ -7,6 +7,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 1.5rem; /* Jarak aman saat scroll ke anchor */
 }
 
 body {
@@ -48,9 +49,10 @@ body {
     --color-danger: #e63946;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    --gradient-secondary: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
-    --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+    --gradient-accent: linear-gradient(135deg, 
+  var(--color-accent) 0%, 
+  var(--color-accent-light) 50%, 
+  var(--color-accent-dark) 100%);
     
     /* Shadows & Glows */
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -138,6 +140,7 @@ body {
     font-weight: 800;
     background: linear-gradient(45deg, var(--color-white), var(--color-accent-light));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: 2px;
     margin-bottom: 0.5rem;
@@ -167,22 +170,25 @@ body {
 }
 
 .highlight::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--color-accent);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform var(--transition-normal);
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--transition-normal);
+  will-change: transform; /* Optimasi performa */
 }
 
 .highlight:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+  transform: scaleX(1);
+  transform-origin: left;
 }
+
+
 
 .tagline {
     font-style: italic;
@@ -510,10 +516,10 @@ body {
 }
 
 .embed-container {
-    background: rgba(13, 27, 42, 0.3);
+    background: transparent;
     border-radius: 16px;
     padding: 2rem;
-    border: 1px solid var(--color-gray);
+    border: none;
     min-height: 300px;
     display: flex;
     align-items: center;
@@ -790,6 +796,11 @@ body {
 }
 
 @media (max-width: 480px) {
+  .link-card {
+    min-height: 56px; /* Area klik aman buat jempol */
+    padding: 0.9rem 1rem;
+    gap: 0.8rem;
+  }
     .name {
         font-size: 2.2rem;
     }
@@ -813,10 +824,38 @@ body {
     }
     
     .link-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
+    width: 44px;
+    height: 44px;
+    font-size: 1.3rem;
+  }
+  .link-content h3 {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+  .link-content p {
+    font-size: 0.85rem;
+    opacity: 0.75;
+  }
+    .bio {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    word-break: break-word; /* Cegah teks panjang keluar container */
+  }
+
+  .tagline {
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+  }
+
+  .stat-item {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+    gap: 0.5rem;
+  }
+
+  .stat-icon {
+    font-size: 1rem;
+  }
 }
 
 /* ===== UTILITY CLASSES ===== */
@@ -840,4 +879,199 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* ===== BADGE COMPONENT ===== */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+.badge-warning {
+  background: rgba(252, 163, 17, 0.2);
+  color: #fca311;
+  border: 1px solid rgba(252, 163, 17, 0.4);
+}
+
+/* ===== ACCESSIBILITY: Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .bg-glow { display: none; }
+  .logo-placeholder { animation: none !important; }
+}
+/* Badge hover effect */
+.badge-warning:hover {
+  background: rgba(252, 163, 17, 0.35);
+  border-color: rgba(252, 163, 17, 0.7);
+  transform: translateY(-1px);
+  transition: all var(--transition-fast);
+  cursor: default;
+}
+/* Gradient text utility */
+.text-gradient-accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow on hover untuk elemen penting */
+.glow-hover:hover {
+  box-shadow: var(--glow-accent);
+  transition: box-shadow var(--transition-normal);
+}
+/* ===== MOBILE STICKY CTA (Scroll-Aware + Blur) ===== */
+.mobile-cta {
+  display: none;
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px); /* Start off-screen */
+  width: calc(100% - 2rem);
+  max-width: 360px;
+  padding: 0.85rem 1.2rem;
+  background: rgba(13, 27, 42, 0.85); /* Semi-transparent dark */
+  backdrop-filter: blur(12px); /* Blur efek kaca */
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--color-white);
+  text-align: center;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              opacity 0.3s ease;
+}
+
+.mobile-cta.cta-visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-cta i {
+  color: #25d366;
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .mobile-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .footer {
+    padding-bottom: 5rem;
+  }
+}
+/* ===== DRIVE LINK CONFIRMATION STATE ===== */
+.link-card.confirm-pending {
+  border-color: var(--color-warning) !important;
+  background: rgba(252, 163, 17, 0.08) !important;
+  transition: all var(--transition-fast);
+}
+
+.link-card.confirm-pending .link-content h3::after {
+  content: " ⚠️ Klik lagi untuk konfirmasi";
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-warning);
+  margin-top: 0.3rem;
+  line-height: 1.2;
+}
+/* ===== TIKTOK FALLBACK CARD ===== */
+.tiktok-fallback-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: rgba(13, 27, 42, 0.6);
+  border: 1px solid var(--color-gray);
+  border-radius: 16px;
+}
+.tt-icon {
+  width: 64px; height: 64px;
+  margin: 0 auto 1rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; color: #ffffff;
+}
+.tiktok-fallback-card h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem; margin-bottom: 0.3rem;
+}
+.tiktok-fallback-card p {
+  color: var(--color-light); opacity: 0.8; margin-bottom: 0.5rem;
+}
+.tt-note {
+  font-size: 0.85rem; opacity: 0.6; margin-bottom: 1.2rem;
+}
+.tt-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  background: #ffffff; color: #000000;
+  border-radius: 50px; font-weight: 600; text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.tt-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255,255,255,0.15);
+}
+/* ===== TOAST NOTIFICATION ===== */
+.toast-notification {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background: rgba(13, 27, 42, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.65rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-warning);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+  display: flex;
+  align-items: c…r;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-warning);
+  max-width: 90vw;
+  width: max-content;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.toast-notification.toast-visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Mobile adjustment */
+@media (max-width: 480px) {
+  .toast-notification {
+    top: 0.8rem;
+    padding: 0.55rem 1rem;
+    font-size: 0.78rem;
+    max-width: 94vw;
+    border-radius: 8px;
+  }
 }
