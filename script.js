@@ -24,36 +24,21 @@ function initCurrentYear() {
 
 // Embed TikTok Feed
 function initTikTokEmbed() {
-    const embedContainer = document.getElementById('tiktok-embed');
-    const fallback = document.getElementById('tiktok-fallback');
-    
-    if (!embedContainer) return;
-    
-    // Coba embed TikTok (karena TikTok tidak mengizinkan embed langsung, kita gunakan iframe embed)
-    // Ini adalah fallback karena TikTok embed memerlukan server-side processing
-    setTimeout(() => {
-        // Simulasi loading gagal setelah 3 detik
-        // Dalam implementasi nyata, Anda perlu menggunakan TikTok API
-        embedContainer.classList.add('hidden');
-        fallback.style.display = 'block';
-        
-        // Alternatif: Tampilkan screenshot atau link langsung
-        fallback.innerHTML = `
-            <div class="fallback-content">
-                <i class="fab fa-tiktok"></i>
-                <h3>Kunjungi TikTok untuk Melihat Karya</h3>
-                <p>Konten TikTok tidak dapat ditampilkan langsung di sini</p>
-                <div style="margin-top: 1.5rem;">
-                    <a href="https://tiktok.com/@mana.fx" target="_blank" class="btn-secondary" style="margin: 0.5rem;">
-                        <i class="fab fa-tiktok"></i> Buka TikTok
-                    </a>
-                    <a href="https://wa.me/6282313145898" target="_blank" class="btn-secondary" style="margin: 0.5rem;">
-                        <i class="fab fa-whatsapp"></i> Tanya via WA
-                    </a>
-                </div>
-            </div>
-        `;
-    }, 3000);
+  const embedContainer = document.getElementById('tiktok-embed');
+  if (!embedContainer) return;
+
+  // Langsung tampilkan card fallback (lebih cepat & reliable)
+  embedContainer.innerHTML = `
+    <div class="tiktok-fallback-card">
+      <div class="tt-icon"><i class="fab fa-tiktok"></i></div>
+      <h3>@mana.fx</h3>
+      <p>7K+ Followers • 250K+ Likes</p>
+      <p class="tt-note">Konten TikTok ditampilkan langsung di aplikasi</p>
+      <a href="https://tiktok.com/@mana.fx" target="_blank" class="tt-btn">
+        <i class="fab fa-tiktok"></i> Buka di TikTok
+      </a>
+    </div>
+  `;
 }
 
 // Site Lock System
@@ -252,3 +237,113 @@ const message = urlParams.get('message');
 if (message) {
     console.log('Message from URL:', decodeURIComponent(message));
 }
+// ===== SCROLL-AWARE CTA TOGGLE =====
+const ctaBtn = document.querySelector('.mobile-cta');
+if (ctaBtn) {
+  let lastScrollY = window.scrollY;
+  const scrollThreshold = 40; // px minimal buat trigger perubahan
+  let isTicking = false;
+
+  function handleScrollCTA() {
+    const currentScrollY = window.scrollY;
+    
+    // Sembunyikan kalau di paling atas
+    if (currentScrollY < 120) {
+      ctaBtn.classList.remove('cta-visible');
+    } 
+    // Scroll ke bawah → muncul
+    else if (currentScrollY > lastScrollY + scrollThreshold) {
+      ctaBtn.classList.add('cta-visible');
+    } 
+    // Scroll ke atas → hilang
+    else if (currentScrollY < lastScrollY - scrollThreshold) {
+      ctaBtn.classList.remove('cta-visible');
+    }
+    
+    lastScrollY = currentScrollY;
+    isTicking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!isTicking) {
+      window.requestAnimationFrame(handleScrollCTA);
+      isTicking = true;
+    }
+  }, { passive: true });
+}
+// ===== UNIVERSAL LINK CONFIRMATION =====
+const confirmedLinks = new Set();
+
+document.querySelector('.link-grid')?.addEventListener('click', function(e) {
+  const link = e.target.closest('.link-card');
+  // Abaikan jika bukan link-card atau href-nya kosong/#
+  if (!link || link.getAttribute('href') === '#' || !link.href) return;
+
+  e.preventDefault(); // Tahan navigasi dulu
+
+  if (confirmedLinks.has(link)) {
+    // ✅ Klik kedua: Buka link & reset state
+    window.open(link.href, link.target || '_blank');
+    confirmedLinks.delete(link);
+    link.classList.remove('confirm-pending');
+  } else {
+    // ⚠️ Klik pertama: Aktifkan warning state
+    confirmedLinks.add(link);
+    link.classList.add('confirm-pending');
+
+    // Auto reset setelah 4 detik jika user nggak klik lagi
+    setTimeout(() => {
+      confirmedLinks.delete(link);
+      link.classList.remove('confirm-pending');
+    }, 4000);
+  }
+});
+
+// 🔄 Reset state kalau user klik di area lain (bukan kartu link)
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.link-card')) {
+    confirmedLinks.forEach(el => el.classList.remove('confirm-pending'));
+    confirmedLinks.clear();
+  }
+});
+
+// ===== TOAST NOTIFICATION FOR DISABLED LINKS =====
+let toastTimeout;
+
+function showToast(message, duration = 3000) {
+  let toast = document.querySelector('.toast-notification');
+  
+  // Buat toast kalau belum ada
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.className = 'toast-notification';
+    toast.innerHTML = `
+      <i class="fas fa-exclamation-circle"></i>
+      <span class="toast-message">${message}</span>
+    `;
+    document.body.appendChild(toast);
+  }
+  
+  // Update pesan
+  const messageSpan = toast.querySelector('.toast-message');
+  if (messageSpan) {
+    messageSpan.textContent = message;
+  }
+  
+  // Tampilkan
+  clearTimeout(toastTimeout);
+  toast.classList.add('toast-visible');
+  
+  // Auto-hide setelah duration
+  toastTimeout = setTimeout(() => {
+    toast.classList.remove('toast-visible');
+  }, duration);
+}
+
+// Deteksi klik pada link dengan href="#"
+document.querySelectorAll('a[href="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    showToast('Link belum tersedia', 3500);
+  });
+});
